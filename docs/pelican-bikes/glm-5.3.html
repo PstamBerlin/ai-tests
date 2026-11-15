@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pelican Bikes — Beak-Tight Repairs</title>
+<style>
+  :root {
+    --bg: #fdf6e3; --card: #ffffff; --ink: #2a2620; --dim: #7a7264;
+    --accent: #f4a83a; --beak: #d98f1f; --line: #e2dac8; --btn-ink: #fff;
+  }
+  html[data-theme="dark"] {
+    --bg: #141a26; --card: #1d2534; --ink: #e8e4d0; --dim: #8a8474;
+    --accent: #f4a83a; --beak: #c87f1a; --line: #2c3547; --btn-ink: #1a1a1a;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg); color: var(--ink);
+    font-family: Georgia, "Times New Roman", serif;
+    transition: background .35s, color .35s;
+    min-height: 100vh; padding: 28px 20px 60px;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; }
+  header { text-align: center; padding: 26px 0 10px; }
+  h1 { font-size: clamp(38px, 9vw, 64px); letter-spacing: -1px; line-height: 1.0; }
+  h1 .bike { color: var(--accent); font-style: italic; }
+  .slogan { color: var(--dim); font-style: italic; font-size: clamp(15px, 3.5vw, 19px); margin-top: 10px; }
+  .pelican { display: block; margin: 22px auto 6px; width: clamp(160px, 40vw, 240px); }
+  .theme-btn {
+    display: block; margin: 14px auto 0; font-family: inherit;
+    background: var(--accent); color: var(--btn-ink); border: none;
+    padding: 9px 22px; border-radius: 999px; font-size: 15px; cursor: pointer;
+    transition: transform .25s ease, filter .2s;
+  }
+  .theme-btn:hover { transform: translateY(-2px); filter: brightness(1.06); }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; margin-top: 30px; }
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 16px;
+    padding: 20px 18px; transition: transform .25s cubic-bezier(.2,.7,.3,1), background .35s, border-color .35s;
+  }
+  .card:hover { transform: translateY(-4px); box-shadow: 0 10px 22px rgba(0,0,0,.08); }
+  .card h2 { font-size: 19px; margin-bottom: 6px; }
+  .card .price { font-size: 26px; color: var(--accent); font-weight: bold; margin: 8px 0 2px; }
+  .card p { font-size: 14px; color: var(--dim); line-height: 1.5; }
+  .hours {
+    margin-top: 26px; background: var(--card); border: 1px solid var(--line);
+    border-radius: 16px; padding: 18px 20px; text-align: center;
+  }
+  .hours h2 { font-size: 18px; margin-bottom: 8px; }
+  .hours table { margin: 0 auto; font-size: 15px; border-collapse: collapse; }
+  .hours td { padding: 3px 14px; color: var(--dim); }
+  .hours td:first-child { text-align: right; font-weight: bold; color: var(--ink); }
+  footer { text-align: center; margin-top: 34px; color: var(--dim); font-size: 13px; font-style: italic; }
+  @media (max-width: 460px) { .hours td { padding: 3px 8px; font-size: 14px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <svg class="pelican" viewBox="0 0 200 170" role="img" aria-label="The shop pelican, wearing a cap">
+      <!-- body -->
+      <ellipse cx="100" cy="112" rx="46" ry="32" fill="#f2ede0" stroke="#b8a880" stroke-width="1.5"/>
+      <!-- tail -->
+      <path d="M56 104 Q 40 96 30 80 Q 46 88 54 92 Q 42 76 36 62 Q 50 76 58 84 Z" fill="#e0d8c4" stroke="#b8a880" stroke-width="1"/>
+      <!-- wing -->
+      <path d="M84 100 Q 108 92 130 104 Q 112 110 90 110 Z" fill="#d8cdb2"/>
+      <!-- neck S-curve -->
+      <path d="M116 94 Q 134 80 140 58 Q 144 44 138 36" fill="none" stroke="#f2ede0" stroke-width="12" stroke-linecap="round"/>
+      <!-- head -->
+      <circle cx="138" cy="32" r="13" fill="#f2ede0"/>
+      <!-- shop cap -->
+      <path d="M126 26 Q 138 12 151 24 L 126 26 Z" fill="#c0392b"/>
+      <circle cx="152" cy="23" r="3.2" fill="#f4a83a"/>
+      <!-- eye -->
+      <circle cx="141" cy="28" r="2.4" fill="#1a1a1a"/>
+      <!-- beak with pouch -->
+      <path d="M146 30 Q 178 32 196 42 Q 197 50 189 51 Q 158 44 148 42 Q 144 36 146 30 Z" fill="#f4a83a" stroke="#d98f1f" stroke-width="1.2"/>
+      <path d="M148 42 Q 168 46 186 50 Q 178 62 158 57 Q 150 50 148 42 Z" fill="#ffd98a" stroke="#e8b54a" stroke-width="1"/>
+      <!-- feet -->
+      <g stroke="#d98f1f" stroke-width="3" fill="none" stroke-linecap="round">
+        <path d="M92 140 L 84 156"/><path d="M84 156 Q 96 160 104 156" fill="none"/>
+        <path d="M108 140 L 100 156"/><path d="M100 156 Q 112 160 120 156" fill="none"/>
+      </g>
+    </svg>
+    <h1>Pelican <span class="bike">Bikes</span></h1>
+    <p class="slogan">Beak-tight repairs, pouch-big promises.</p>
+    <button class="theme-btn" id="themeToggle">Switch to dark mode</button>
+  </header>
+
+  <div class="cards">
+    <div class="card">
+      <h2>The Tune-Up</h2>
+      <div class="price">€29</div>
+      <p>Brakes, gears, chain check, wheel true, tire pressure, and a full 12-point inspection. Your bike leaves sharp and honest.</p>
+    </div>
+    <div class="card">
+      <h2>The Flat Fish</h2>
+      <div class="price">€15</div>
+      <p>Puncture repair with a proper patch, plus a quick look for glass hiding in the tire. In and out while you wait.</p>
+    </div>
+    <div class="card">
+      <h2>The Full Pouch</h2>
+      <div class="price">€89</div>
+      <p>Full service: hubs, bottom bracket, headset, cables, and a deep clean. Every bolt torqued, every part inspected.</p>
+    </div>
+  </div>
+
+  <div class="hours">
+    <h2>Opening hours</h2>
+    <table>
+      <tr><td>Mon – Fri</td><td>09:00 – 18:00</td></tr>
+      <tr><td>Saturday</td><td>10:00 – 14:00</td></tr>
+      <tr><td>Sunday</td><td>Closed (the fish rests)</td></tr>
+    </table>
+  </div>
+
+  <footer>Pelican Bikes — a made-up shop drawn and built in one file. The pouch is for tools.</footer>
+</div>
+
+<script>
+  const btn = document.getElementById('themeToggle');
+  const root = document.documentElement;
+  function setTheme(mode) {
+    root.setAttribute('data-theme', mode);
+    btn.textContent = mode === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
+    try { localStorage.setItem('pelican-theme', mode); } catch (e) {}
+  }
+  btn.addEventListener('click', () => {
+    setTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  });
+  try {
+    const saved = localStorage.getItem('pelican-theme');
+    if (saved === 'dark' || saved === 'light') setTheme(saved);
+  } catch (e) {}
+</script>
+</body>
+</html>

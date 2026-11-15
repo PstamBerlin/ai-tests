@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pelican Bikes: big beak, quick fixes</title>
+<meta name="description" content="Pelican Bikes, the bike repair shop run by a pelican. Punctures, tune-ups and full services.">
+<style>
+  :root {
+    color-scheme: light;
+    --bg: #FFF8EC; --bg2: #FFE9C7; --ink: #1D2B3A; --muted: #55657A; --card: #FFFFFF; --line: #F0DDB8;
+    --brand: #E8590C; --brand-ink: #FFFFFF; --sea: #1C7ED6; --wave: #BFE3F7; --good: #2B8A3E; --shadow: 0 10px 30px rgba(120, 70, 10, .12);
+    --feather: #FFFFFF; --feather2: #E7E2D6; --wing: #AEB9C6; --bill: #FFB627; --pouch: #FF9F1C; --leg: #F76707; --cap: #1C7ED6;
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #0E1B2B; --bg2: #14263B; --ink: #F2F6FB; --muted: #A5B4C6; --card: #162639; --line: #25405C;
+    --brand: #FF922B; --brand-ink: #1A1208; --sea: #4DABF7; --wave: #1B3A5C; --good: #69DB7C; --shadow: 0 10px 30px rgba(0, 0, 0, .4);
+    --feather: #F4F1EA; --feather2: #BDB8AB; --wing: #7F8EA0; --bill: #FFC145; --pouch: #FFA94D; --leg: #FF922B; --cap: #4DABF7;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 16px/1.55 ui-rounded, "Avenir Next", "Segoe UI", system-ui, sans-serif;
+    transition: background-color .35s ease, color .35s ease;
+  }
+  a { color: inherit; }
+  .wrap { width: min(1080px, 100% - 32px); margin-inline: auto; }
+
+  /* top bar */
+  .bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 0; }
+  .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.15rem; letter-spacing: -.02em; text-decoration: none; }
+  .logo i { width: 34px; height: 34px; border-radius: 10px; background: var(--brand); display: grid; place-items: center; }
+  .logo svg { width: 22px; height: 22px; }
+  .toggle {
+    display: inline-flex; align-items: center; gap: 9px; border: 2px solid var(--ink); background: var(--card); color: var(--ink);
+    padding: 7px 14px 7px 9px; border-radius: 999px; font: inherit; font-weight: 700; cursor: pointer; min-height: 44px;
+    transition: transform .15s ease, background-color .35s ease;
+  }
+  .toggle:hover { transform: translateY(-1px); }
+  .toggle:active { transform: translateY(1px) scale(.98); }
+  .toggle:focus-visible, .btn:focus-visible { outline: 3px solid var(--brand); outline-offset: 3px; }
+  .toggle .knob { width: 30px; height: 30px; border-radius: 50%; background: var(--brand); display: grid; place-items: center; color: var(--brand-ink); }
+  .toggle .knob svg { width: 18px; height: 18px; }
+  .toggle .sun { display: block; } .toggle .moon { display: none; }
+  :root[data-theme="dark"] .toggle .sun { display: none; } :root[data-theme="dark"] .toggle .moon { display: block; }
+
+  /* hero */
+  .hero { position: relative; overflow: hidden; background: linear-gradient(180deg, var(--bg2), var(--bg)); border-bottom: 1px solid var(--line); }
+  .hero-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 12px; align-items: end; padding: 28px 0 0; }
+  .kicker { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; font-size: .9rem; color: var(--brand); text-transform: uppercase; letter-spacing: .08em; }
+  .kicker::before { content: ""; width: 26px; height: 3px; border-radius: 3px; background: currentColor; }
+  h1 { margin: 10px 0 8px; font-size: clamp(2.8rem, 9vw, 5.6rem); line-height: .95; letter-spacing: -.045em; }
+  h1 em { font-style: normal; color: var(--brand); }
+  .slogan { margin: 0 0 22px; font-size: clamp(1.15rem, 3vw, 1.6rem); font-weight: 700; color: var(--sea); }
+  .lead { margin: 0 0 24px; max-width: 34em; color: var(--muted); font-size: 1.08rem; }
+  .status { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 999px; background: var(--card); border: 1px solid var(--line); font-weight: 700; font-size: .95rem; box-shadow: var(--shadow); }
+  .status b { width: 10px; height: 10px; border-radius: 50%; background: var(--muted); }
+  .status.open b { background: var(--good); box-shadow: 0 0 0 4px color-mix(in srgb, var(--good) 25%, transparent); }
+  .pelican { width: 100%; max-width: 360px; justify-self: center; height: auto; margin-bottom: -4px; }
+  .waves { display: block; width: 100%; height: 46px; margin-top: -2px; }
+  .waves path { fill: var(--wave); }
+
+  /* sections */
+  section { padding: 44px 0 8px; }
+  h2 { margin: 0 0 6px; font-size: clamp(1.7rem, 4.4vw, 2.4rem); letter-spacing: -.03em; line-height: 1.1; }
+  .sub { margin: 0 0 22px; color: var(--muted); }
+  .cards { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+  .card { position: relative; background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: 22px; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 8px; transition: transform .2s ease, background-color .35s ease, border-color .35s ease; }
+  .card:hover { transform: translateY(-4px); }
+  .card .ico { width: 54px; height: 54px; border-radius: 16px; background: color-mix(in srgb, var(--brand) 16%, transparent); display: grid; place-items: center; color: var(--brand); }
+  .card .ico svg { width: 30px; height: 30px; }
+  .card h3 { margin: 6px 0 0; font-size: 1.25rem; letter-spacing: -.01em; }
+  .card p { margin: 0; color: var(--muted); flex: 1; }
+  .price { font-size: 2.1rem; font-weight: 900; letter-spacing: -.03em; color: var(--ink); }
+  .price small { font-size: .95rem; font-weight: 600; color: var(--muted); letter-spacing: 0; }
+  .card.pick::after { content: "Most popular"; position: absolute; top: -12px; right: 18px; background: var(--brand); color: var(--brand-ink); font-size: .78rem; font-weight: 800; padding: 4px 12px; border-radius: 999px; }
+
+  .hours-grid { display: grid; gap: 18px; grid-template-columns: 1fr 1fr; align-items: stretch; }
+  table { width: 100%; border-collapse: collapse; background: var(--card); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; box-shadow: var(--shadow); }
+  th, td { text-align: left; padding: 14px 18px; border-bottom: 1px solid var(--line); }
+  tr:last-child th, tr:last-child td { border-bottom: 0; }
+  th { font-weight: 700; } td { color: var(--muted); }
+  tr.today th, tr.today td { background: color-mix(in srgb, var(--brand) 14%, transparent); color: var(--ink); font-weight: 800; }
+  .note { background: var(--brand); color: var(--brand-ink); border-radius: 22px; padding: 24px; display: flex; flex-direction: column; justify-content: center; gap: 8px; }
+  .note h3 { margin: 0; font-size: 1.4rem; line-height: 1.15; }
+  .note p { margin: 0; opacity: .92; }
+  .btn { align-self: flex-start; margin-top: 8px; display: inline-block; padding: 11px 20px; border-radius: 999px; background: var(--brand-ink); color: var(--brand); font-weight: 800; text-decoration: none; }
+  :root:not([data-theme="dark"]) .btn { background: #fff; }
+  footer { margin-top: 48px; padding: 26px 0 40px; border-top: 1px solid var(--line); color: var(--muted); font-size: .92rem; display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; }
+
+  @media (max-width: 780px) {
+    .hero-grid { grid-template-columns: 1fr; padding-top: 12px; }
+    .pelican { max-width: 260px; margin-top: 8px; }
+    .hours-grid { grid-template-columns: 1fr; }
+    .toggle .label { display: none; }
+    .toggle { padding: 7px; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <div class="bar">
+      <a class="logo" href="#top" id="top" aria-label="Pelican Bikes, home">
+        <i><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="16" r="4"/><circle cx="18" cy="16" r="4"/><path d="M6 16l4-8h5l3 8M10 8l-1-2H7"/></svg></i>
+        Pelican Bikes
+      </a>
+      <button class="toggle" id="themeBtn" type="button" aria-pressed="false" aria-label="Switch to the dark look">
+        <span class="knob" aria-hidden="true">
+          <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>
+          <svg class="moon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5 8.5 8.5 0 1 0 20.5 14.2z"/></svg>
+        </span>
+        <span class="label" id="themeLabel">Dark look</span>
+      </button>
+    </div>
+
+    <div class="hero-grid">
+      <div>
+        <span class="kicker">Bike repair, by the harbour</span>
+        <h1>Pelican <em>Bikes</em></h1>
+        <p class="slogan">Big beak. Quick fixes.</p>
+        <p class="lead">Your bike is in good claws. Bring it in squeaky, flat or wobbly, and it rolls out smooth, usually the same day.</p>
+        <span class="status" id="status"><b></b><span id="statusText">Checking the hours…</span></span>
+      </div>
+
+      <svg class="pelican" viewBox="0 0 280 300" role="img" aria-label="A friendly pelican mechanic in a blue cap, holding a spanner">
+        <defs>
+          <radialGradient id="fb" cx=".35" cy=".3" r=".85"><stop offset="0" stop-color="var(--feather)"/><stop offset="1" stop-color="var(--feather2)"/></radialGradient>
+          <linearGradient id="bl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--bill)"/><stop offset="1" stop-color="var(--pouch)"/></linearGradient>
+        </defs>
+        <ellipse cx="136" cy="282" rx="86" ry="10" fill="#000" opacity=".14"/>
+        <!-- legs and feet -->
+        <path d="M112 226 L108 270 M158 226 L162 270" stroke="var(--leg)" stroke-width="9" stroke-linecap="round"/>
+        <path d="M108 270 l-20 6 M108 270 l8 8 M108 270 l-8 8 M162 270 l-18 8 M162 270 l8 8 M162 270 l20 6" stroke="var(--leg)" stroke-width="7" stroke-linecap="round"/>
+        <!-- tail -->
+        <path d="M60 196 L24 214 L44 222 L30 238 L68 226 Z" fill="var(--wing)" stroke="var(--ink)" stroke-width="2.5" stroke-linejoin="round"/>
+        <!-- body -->
+        <path d="M54 170 C54 118 100 92 150 96 C200 100 222 138 214 184 C206 232 160 250 112 244 C76 240 54 212 54 170 Z" fill="url(#fb)" stroke="var(--ink)" stroke-width="3"/>
+        <!-- neck -->
+        <path d="M168 112 C196 100 190 60 168 52 C152 46 140 52 134 66" fill="none" stroke="var(--ink)" stroke-width="34" stroke-linecap="round" opacity=".001"/>
+        <path d="M150 110 C180 104 196 78 176 56 L150 66 C146 84 140 98 130 108 Z" fill="url(#fb)" stroke="var(--ink)" stroke-width="3" stroke-linejoin="round"/>
+        <!-- wing -->
+        <path d="M84 150 C100 128 150 130 182 156 C170 196 132 226 92 220 C70 200 68 170 84 150 Z" fill="var(--wing)" stroke="var(--ink)" stroke-width="3" stroke-linejoin="round"/>
+        <path d="M96 168 q18 6 36 -2 M92 186 q22 8 44 -2 M96 204 q20 6 38 -2" fill="none" stroke="var(--ink)" stroke-width="2.4" stroke-linecap="round" opacity=".45"/>
+        <!-- head -->
+        <circle cx="170" cy="50" r="30" fill="url(#fb)" stroke="var(--ink)" stroke-width="3"/>
+        <!-- cap -->
+        <path d="M140 42 C142 14 196 8 202 38 C190 32 160 30 140 42 Z" fill="var(--cap)" stroke="var(--ink)" stroke-width="3" stroke-linejoin="round"/>
+        <path d="M196 38 C214 38 224 44 224 44 C218 50 204 48 192 44 Z" fill="var(--cap)" stroke="var(--ink)" stroke-width="3" stroke-linejoin="round"/>
+        <circle cx="171" cy="22" r="4" fill="var(--ink)" opacity=".5"/>
+        <!-- eye -->
+        <circle cx="178" cy="52" r="8" fill="#fff" stroke="var(--ink)" stroke-width="2.5"/><circle cx="180" cy="53" r="4" fill="var(--ink)"/><circle cx="181.5" cy="51.5" r="1.4" fill="#fff"/>
+        <!-- bill and pouch -->
+        <path d="M194 52 C230 50 262 62 268 76 C256 76 222 72 194 68 Z" fill="url(#bl)" stroke="var(--ink)" stroke-width="3" stroke-linejoin="round"/>
+        <path d="M194 68 C222 74 256 78 266 80 C256 112 216 122 200 100 C194 90 192 78 194 68 Z" fill="url(#bl)" stroke="var(--ink)" stroke-width="3" stroke-linejoin="round" opacity=".95"/>
+        <path d="M204 84 q14 10 34 8" fill="none" stroke="var(--ink)" stroke-width="2.2" stroke-linecap="round" opacity=".4"/>
+        <!-- spanner in the wing -->
+        <g transform="rotate(-32 206 176)">
+          <rect x="198" y="150" width="14" height="74" rx="7" fill="#C9D3DE" stroke="var(--ink)" stroke-width="3"/>
+          <path d="M190 150 a17 17 0 0 1 30 0 l-8 -2 l-4 10 l-6 0 l-4 -10 Z" fill="#C9D3DE" stroke="var(--ink)" stroke-width="3" stroke-linejoin="round"/>
+        </g>
+        <path d="M168 168 C184 164 194 170 198 180" fill="none" stroke="var(--wing)" stroke-width="12" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </div>
+  <svg class="waves" viewBox="0 0 1200 46" preserveAspectRatio="none" aria-hidden="true"><path d="M0 24 Q150 0 300 24 T600 24 T900 24 T1200 24 V46 H0 Z"/></svg>
+</header>
+
+<main class="wrap">
+  <section id="services" aria-labelledby="h-services">
+    <h2 id="h-services">What we fix</h2>
+    <p class="sub">Honest prices, no surprises. Pay when you pick it up.</p>
+    <div class="cards">
+      <article class="card">
+        <div class="ico"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="16" r="11"/><circle cx="16" cy="16" r="3"/><path d="M16 5v8M16 19v8M5 16h8M19 16h8"/></svg></div>
+        <h3>Flat tyre fix</h3>
+        <p>We find the hole, patch the tube and pump it back to the right pressure.</p>
+        <div class="price">€9 <small>about 20 min</small></div>
+      </article>
+      <article class="card pick">
+        <div class="ico"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 22c4-9 12-12 22-9"/><path d="M22 6l5 7-8 2z"/><circle cx="9" cy="24" r="2.5"/></svg></div>
+        <h3>Brakes and gears</h3>
+        <p>New pads and cables where needed, plus a tune-up so every gear clicks into place.</p>
+        <div class="price">€29 <small>about 1 hour</small></div>
+      </article>
+      <article class="card">
+        <div class="ico"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 4a7 7 0 0 0-6 10L4 24l4 4 10-10a7 7 0 0 0 10-6l-4 4-4-1-1-4z"/></svg></div>
+        <h3>Beak-to-tail service</h3>
+        <p>Everything checked, cleaned and oiled: chain, wheels, brakes, gears, bolts and lights.</p>
+        <div class="price">€69 <small>ready next day</small></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="hours" aria-labelledby="h-hours">
+    <h2 id="h-hours">Opening hours</h2>
+    <p class="sub">Drop in, no booking needed.</p>
+    <div class="hours-grid">
+      <table aria-label="Opening hours">
+        <tbody>
+          <tr data-day="1"><th scope="row">Monday</th><td>08:00 to 18:00</td></tr>
+          <tr data-day="2"><th scope="row">Tuesday</th><td>08:00 to 18:00</td></tr>
+          <tr data-day="3"><th scope="row">Wednesday</th><td>08:00 to 18:00</td></tr>
+          <tr data-day="4"><th scope="row">Thursday</th><td>08:00 to 18:00</td></tr>
+          <tr data-day="5"><th scope="row">Friday</th><td>08:00 to 18:00</td></tr>
+          <tr data-day="6"><th scope="row">Saturday</th><td>09:00 to 15:00</td></tr>
+          <tr data-day="0"><th scope="row">Sunday</th><td>Closed, the pelican is fishing</td></tr>
+        </tbody>
+      </table>
+      <div class="note">
+        <h3>Bike in a hurry?</h3>
+        <p>Come before 10:00 and a flat tyre is usually fixed while you have a coffee next door.</p>
+        <a class="btn" href="#services">See the prices</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <span>Pelican Bikes · Harbour Road 12 · No pelicans were harmed in the making of this website.</span>
+  <span>Prices include VAT.</span>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement, btn = document.getElementById('themeBtn'), label = document.getElementById('themeLabel');
+  var KEY = 'pelican-bikes-theme';
+  var mq = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+  function saved() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+  function current() { return root.getAttribute('data-theme') || (mq && mq.matches ? 'dark' : 'light'); }
+  function paint() {
+    var dark = current() === 'dark';
+    label.textContent = dark ? 'Light look' : 'Dark look';
+    btn.setAttribute('aria-pressed', String(dark));
+    btn.setAttribute('aria-label', dark ? 'Switch to the light look' : 'Switch to the dark look');
+    var meta = document.querySelector('meta[name="theme-color"]');
+    if (!meta) { meta = document.createElement('meta'); meta.name = 'theme-color'; document.head.appendChild(meta); }
+    meta.content = dark ? '#0E1B2B' : '#FFF8EC';
+  }
+  var s = saved(); if (s === 'dark' || s === 'light') root.setAttribute('data-theme', s);
+  btn.addEventListener('click', function () {
+    var next = current() === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem(KEY, next); } catch (e) {}
+    paint();
+  });
+  if (mq && mq.addEventListener) mq.addEventListener('change', function () { if (!root.getAttribute('data-theme')) paint(); });
+  paint();
+
+  // today's row, and whether the shop is open right now
+  var HOURS = { 0: null, 1: [8, 18], 2: [8, 18], 3: [8, 18], 4: [8, 18], 5: [8, 18], 6: [9, 15] };
+  var now = new Date(), day = now.getDay(), h = now.getHours() + now.getMinutes() / 60, span = HOURS[day];
+  var row = document.querySelector('tr[data-day="' + day + '"]'); if (row) row.classList.add('today');
+  var box = document.getElementById('status'), text = document.getElementById('statusText'), open = !!span && h >= span[0] && h < span[1];
+  box.classList.toggle('open', open);
+  text.textContent = open ? 'Open now until ' + String(span[1]).padStart(2, '0') + ':00' : (span && h < span[0] ? 'Opens today at ' + String(span[0]).padStart(2, '0') + ':00' : 'Closed right now');
+})();
+</script>
+</body>
+</html>

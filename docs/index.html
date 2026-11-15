@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The AI tests · Building with AI</title>
+<meta name="description" content="One prompt, six AI models. The tests from the book Building with AI by Peter Stam: a website for a pelican's bike shop, and a pelican on a bike.">
+<meta property="og:title" content="The AI tests"><meta property="og:description" content="One prompt, six AI models. Try every result yourself."><meta property="og:image" content="https://tests.peterstam.eu/shots/fable.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%237A4DFF'/%3E%3Crect x='27' y='14' width='10' height='36' rx='4' fill='%23B9F24A'/%3E%3C/svg%3E">
+<style>
+:root{--bg:#F5F2FF;--ink:#1E1438;--body:#42375F;--card:#FFFFFF;--line:#E4DDF7;--purple:#7A4DFF;--purple-ink:#FFFFFF;--lime:#B9F24A;--good:#1E7B3A;--code:#1E1438;--code-ink:#FFFFFF}
+@media (prefers-color-scheme: dark){:root{--bg:#140D27;--ink:#F3EEFF;--body:#BFB4DC;--card:#1E1438;--line:#35275C;--purple:#A58BFF;--purple-ink:#140D27;--good:#7BE495;--code:#0C0719;--code-ink:#F3EEFF}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 ui-sans-serif,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",system-ui,sans-serif}
+main{width:min(1180px,100% - 32px);margin:0 auto;padding:34px 0 60px}
+a{color:var(--purple)} :focus-visible{outline:3px solid var(--purple);outline-offset:3px;border-radius:6px}
+.kick{margin:0 0 10px;font:700 13px/1 ui-monospace,Menlo,Consolas,monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--purple)}
+h1{margin:0 0 12px;font-size:clamp(2.4rem,8vw,4.4rem);line-height:.98;letter-spacing:-.04em} h1 i{display:inline-block;width:.16em;height:.78em;border-radius:.05em;background:var(--lime);margin-left:.1em;vertical-align:-.04em}
+.lede{margin:0 0 8px;max-width:62ch;color:var(--body);font-size:1.1rem}
+nav{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0 6px} nav a{display:inline-flex;align-items:center;min-height:46px;padding:0 18px;border-radius:999px;border:2px solid var(--ink);color:var(--ink);font-weight:700;text-decoration:none} nav a:first-child{background:var(--ink);color:var(--bg)}
+section{padding-top:46px} h2{margin:0 0 8px;font-size:clamp(1.7rem,5vw,2.5rem);letter-spacing:-.03em;line-height:1.05}
+h2::before{content:"";display:inline-block;width:9px;height:.8em;border-radius:3px;background:var(--lime);margin-right:12px;vertical-align:-.04em}
+.sub{margin:0 0 16px;max-width:68ch;color:var(--body)}
+pre{margin:0 0 20px;padding:16px 18px;background:var(--code);color:var(--code-ink);border-radius:16px;font:14px/1.55 ui-monospace,Menlo,Consolas,monospace;white-space:pre-wrap;overflow-wrap:anywhere;max-width:820px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.card{margin:0;background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column} .card.pick{border:2px solid var(--purple)}
+.shot{display:block;background:var(--line)} .shot img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;object-position:top}
+.meta{position:relative;padding:14px 16px 16px;display:flex;flex-direction:column;gap:2px;flex:1} .meta h3{margin:0;font-size:1.15rem} .meta p{margin:0 0 10px;color:var(--body);font-size:.92rem}
+.badge{position:absolute;top:14px;right:14px;padding:4px 10px;border-radius:999px;background:var(--lime);color:#1E1438;font-size:.76rem;font-weight:800}
+.open{margin-top:auto;align-self:flex-start;display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:12px;background:var(--purple);color:var(--purple-ink);font-weight:700;text-decoration:none}
+.tablewrap{position:relative;overflow-x:auto;margin:0 0 20px;border:1px solid var(--line);border-radius:16px;background:var(--card)}
+table{border-collapse:collapse;width:100%;min-width:760px;font-size:.92rem} th,td{padding:11px 12px;text-align:left;border-bottom:1px solid var(--line)} thead th{background:var(--purple);color:var(--purple-ink);font-size:.74rem;letter-spacing:.05em;text-transform:uppercase;vertical-align:bottom} tbody tr:last-child>*{border-bottom:0}
+td.y{position:relative;color:var(--good);font-weight:800;font-size:1.1rem} .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+.fair{margin:22px 0 0;padding:16px 18px;border-left:5px solid var(--lime);background:var(--card);border-radius:0 14px 14px 0;max-width:78ch;color:var(--body)} .fair b{color:var(--ink)}
+footer{margin-top:54px;padding-top:20px;border-top:1px solid var(--line);color:var(--body);font-size:.92rem;display:flex;flex-wrap:wrap;gap:6px 22px;justify-content:space-between}
+</style>
+</head>
+<body>
+<main>
+  <p class="kick">From the book Building with AI</p>
+  <h1>The AI tests<i></i></h1>
+  <p class="lede">One prompt, six AI models, one go each, no follow-ups. These are the tests from Chapter 3 of my book. Everything here is the real answer each model gave, untouched, so you can judge for yourself.</p>
+  <nav aria-label="On this page"><a href="#website">The website test</a><a href="#pelican">The pelican test</a></nav>
+
+  <section id="website" aria-labelledby="h-website">
+    <h2 id="h-website">The website test</h2>
+    <p class="sub">Every model got exactly these words. Open each page and press its light and dark button.</p>
+    <pre>Make a one-page website for a made-up bike repair shop run by a pelican, called "Pelican Bikes".
+
+Put everything in one file called index.html. No outside files, no libraries, no images from the internet.
+
+It needs:
+- a big title with a short slogan
+- three repair services with prices
+- the opening hours
+- a small pelican that you draw yourself, as part of the page
+- one thing that really works: a button that switches the whole page between a light look and a dark look
+
+It must look good on a phone and on a computer. Give me only the finished file.</pre>
+    <div class="grid"><article class="card"><a class="shot" href="pelican-bikes/haiku.html"><img src="shots/haiku.jpg" width="800" height="600" alt="The Pelican Bikes page made by Claude Haiku 5.5" loading="lazy"></a>
+<div class="meta"><h3>Claude Haiku 5.5</h3><p>written in a project</p><a class="open" href="pelican-bikes/haiku.html">Open the live page</a></div></article><article class="card"><a class="shot" href="pelican-bikes/sonnet.html"><img src="shots/sonnet.jpg" width="800" height="600" alt="The Pelican Bikes page made by Claude Sonnet 5.5" loading="lazy"></a>
+<div class="meta"><h3>Claude Sonnet 5.5</h3><p>written in a project</p><a class="open" href="pelican-bikes/sonnet.html">Open the live page</a></div></article><article class="card pick"><a class="shot" href="pelican-bikes/fable.html"><img src="shots/fable.jpg" width="800" height="600" alt="The Pelican Bikes page made by Claude Fable 5.2" loading="lazy"></a>
+<div class="meta"><h3>Claude Fable 5.2</h3><p>written in a project</p><span class="badge">Peter&rsquo;s pick</span><a class="open" href="pelican-bikes/fable.html">Open the live page</a></div></article><article class="card"><a class="shot" href="pelican-bikes/gemini-argon.html"><img src="shots/gemini-argon.jpg" width="800" height="600" alt="The Pelican Bikes page made by Gemini Argon" loading="lazy"></a>
+<div class="meta"><h3>Gemini Argon</h3><p>written in a chat</p><a class="open" href="pelican-bikes/gemini-argon.html">Open the live page</a></div></article><article class="card"><a class="shot" href="pelican-bikes/gemini-hydrogen.html"><img src="shots/gemini-hydrogen.jpg" width="800" height="600" alt="The Pelican Bikes page made by Gemini Hydrogen" loading="lazy"></a>
+<div class="meta"><h3>Gemini Hydrogen</h3><p>written in a chat</p><a class="open" href="pelican-bikes/gemini-hydrogen.html">Open the live page</a></div></article><article class="card"><a class="shot" href="pelican-bikes/glm-5.3.html"><img src="shots/glm-5.3.jpg" width="800" height="600" alt="The Pelican Bikes page made by GLM 5.3" loading="lazy"></a>
+<div class="meta"><h3>GLM 5.3</h3><p>written in a chat</p><a class="open" href="pelican-bikes/glm-5.3.html">Open the live page</a></div></article></div>
+    <h3 style="margin:30px 0 10px">What was checked</h3>
+    <div class="tablewrap"><table><thead><tr><th>Model</th><th>Opens with no errors</th><th>No outside files</th><th>Three prices</th><th>Opening hours</th><th>Pelican drawn in the page</th><th>Switch works</th><th>Fits a phone</th></tr></thead><tbody><tr><th scope="row">Claude Haiku 5.5</th><td class="y"><span aria-hidden="true">&#10003;</span><span class="vh">yes</span></td><td class="y"><span aria-hidden="true">&#10003;</span><span class="vh">yes</span></td><td class="y"><span aria-hidden="true">&#10003;</span><span class="vh">yes</span></td><td class="y"><span aria-hidden="true">&#10003;</span><span class="vh">yes</span></td><td class="y"><span aria-hidden="true">&#10003;</span><span class="vh">yes</span></td><td class="y"><span aria-hidden="true">&#10003;</span><span class="vh">yes</span></td><td class="y"><span aria-hidden="true">&#10003;</span><span class="vh">yes</span></td></tr><tr><th scope="row">Claude Sonnet 5.5</th><td class="y"><span aria-hidden="true">&#10003;</span><span class="vh">yes</span></td><td class="y"><span aria-hidden="true">&#10003;</span><span class="vh">yes</span></td><td class="y"><span aria-hidden="true">&#10003;</span><span class="vh">yes</span></td><td class="y"><span aria-hidden="true">&#10003;</span><span class="vh">yes</span></td><td class="y"><span aria-hidden="true">&#10003;</span><span class="vh">yes</span></td><td class="y"><span aria-hidden="true">&#10003;</span><span class="vh">yes</span></td><td class="y"><span aria-hidden="true">&#10003;</span><span class="vh">yes</span></td></tr><tr><th scope="row">Claude Fable 5.2</th><td class="y"><span aria-hidden="true">&#10003;</span><span class="vh">yes</span></td><td class="y"><span aria-hidden="true">&#10003;</span><span class="vh">yes</span></td><td class="y"><span aria-hidden="true">&#10003;</span><span class="vh">yes</span></td><td class="y"><span aria-hidden="true">&#10003;</span><span class="vh">yes</span></td><td class="y"><span aria-hidden="true">&#10003;</span><span class="vh">yes</span></td><td class="y"><span aria-hidden="true">&#10003;</span><span class="vh">yes</span></td><td class="y"><span aria-hidden="true">&#10003;</span><span class="vh">yes</span></td></tr><tr><th scope="row">Gemini Argon</th><td class="y"><span aria-hidden="true">&#10003;</span><span class="vh">yes</span></td><td class="y"><span aria-hidden="true">&#10003;</span><span class="vh">yes</span></td><td class="y"><span aria-hidden="true">&#10003;</span><span class="vh">yes</span></td><td class="y"><span aria-hidden="true">&#10003;</span><span class="vh">yes</span></td><td class="y"><span aria-hidden="true">&#10003;</span><span class="vh">yes</span></td><td class="y"><span aria-hidden="true">&#10003;</span><span class="vh">yes</span></td><td class="y"><span aria-hidden="true">&#10003;</span><span class="vh">yes</span></td></tr><tr><th scope="row">Gemini Hydrogen</th><td class="y"><span aria-hidden="true">&#10003;</span><span class="vh">yes</span></td><td class="y"><span aria-hidden="true">&#10003;</span><span class="vh">yes</span></td><td class="y"><span aria-hidden="true">&#10003;</span><span class="vh">yes</span></td><td class="y"><span aria-hidden="true">&#10003;</span><span class="vh">yes</span></td><td class="y"><span aria-hidden="true">&#10003;</span><span class="vh">yes</span></td><td class="y"><span aria-hidden="true">&#10003;</span><span class="vh">yes</span></td><td class="y"><span aria-hidden="true">&#10003;</span><span class="vh">yes</span></td></tr><tr><th scope="row">GLM 5.3</th><td class="y"><span aria-hidden="true">&#10003;</span><span class="vh">yes</span></td><td class="y"><span aria-hidden="true">&#10003;</span><span class="vh">yes</span></td><td class="y"><span aria-hidden="true">&#10003;</span><span class="vh">yes</span></td><td class="y"><span aria-hidden="true">&#10003;</span><span class="vh">yes</span></td><td class="y"><span aria-hidden="true">&#10003;</span><span class="vh">yes</span></td><td class="y"><span aria-hidden="true">&#10003;</span><span class="vh">yes</span></td><td class="y"><span aria-hidden="true">&#10003;</span><span class="vh">yes</span></td></tr></tbody></table></div>
+    <p class="sub">A script opened every page in a real browser, at computer size and at phone size, on 15 November 2026. All six passed everything the prompt asked for. So the difference is not whether they work. It is how much each model made, and how it looks.</p>
+  </section>
+
+  <section id="pelican" aria-labelledby="h-pelican">
+    <h2 id="h-pelican">The pelican test</h2>
+    <p class="sub">The same six models, one line: an SVG is a picture written as code, so this is a drawing test and a coding test at once.</p>
+    <pre>make a detailed svg of a pelican on a bike</pre>
+    <div class="grid"><figure class="card"><a class="shot" href="pelicans/haiku.svg"><img src="pelicans/haiku.svg" width="800" height="600" alt="A pelican on a bike, drawn by Claude Haiku 5.5" loading="lazy"></a><figcaption class="meta"><h3>Claude Haiku 5.5</h3></figcaption></figure><figure class="card"><a class="shot" href="pelicans/sonnet.svg"><img src="pelicans/sonnet.svg" width="800" height="600" alt="A pelican on a bike, drawn by Claude Sonnet 5.5" loading="lazy"></a><figcaption class="meta"><h3>Claude Sonnet 5.5</h3></figcaption></figure><figure class="card"><a class="shot" href="pelicans/fable.svg"><img src="pelicans/fable.svg" width="800" height="600" alt="A pelican on a bike, drawn by Claude Fable 5.2" loading="lazy"></a><figcaption class="meta"><h3>Claude Fable 5.2</h3></figcaption></figure><figure class="card"><a class="shot" href="pelicans/gemini-argon.svg"><img src="pelicans/gemini-argon.svg" width="800" height="600" alt="A pelican on a bike, drawn by Gemini Argon" loading="lazy"></a><figcaption class="meta"><h3>Gemini Argon</h3></figcaption></figure><figure class="card"><a class="shot" href="pelicans/gemini-hydrogen.svg"><img src="pelicans/gemini-hydrogen.svg" width="800" height="600" alt="A pelican on a bike, drawn by Gemini Hydrogen" loading="lazy"></a><figcaption class="meta"><h3>Gemini Hydrogen</h3></figcaption></figure><figure class="card"><a class="shot" href="pelicans/glm.svg"><img src="pelicans/glm.svg" width="800" height="600" alt="A pelican on a bike, drawn by GLM 5.3" loading="lazy"></a><figcaption class="meta"><h3>GLM 5.3</h3></figcaption></figure></div>
+  </section>
+
+  <p class="fair"><b>Not a perfectly fair race.</b> The three Claude models worked inside my project. For the pelican they could look at their own picture and fix it before handing it over. Gemini and GLM answered in a chat, in a single go. &ldquo;Peter&rsquo;s pick&rdquo; is only my opinion, and Claude is also the AI I build with. Look, and decide for yourself.</p>
+
+  <footer><span>Made by Peter Stam, 11, Berlin · <a href="https://peterstam.eu">peterstam.eu</a></span><span>No accounts, no ads, no tracking.</span></footer>
+</main>
+</body>
+</html>

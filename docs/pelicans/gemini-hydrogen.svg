@@ -1,0 +1,304 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <!-- Sky & Background Gradients -->
+    <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#87CEEB" />
+      <stop offset="65%" stop-color="#E0F6FF" />
+      <stop offset="100%" stop-color="#FFF5E4" />
+    </linearGradient>
+
+    <linearGradient id="waterGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4FA8D5" />
+      <stop offset="100%" stop-color="#2978A0" />
+    </linearGradient>
+
+    <!-- Pelican Gradients -->
+    <linearGradient id="beakTopGrad" x1="0" y1="0" x2="1" y2="0.5">
+      <stop offset="0%" stop-color="#FDB813" />
+      <stop offset="70%" stop-color="#F58220" />
+      <stop offset="100%" stop-color="#E04F16" />
+    </linearGradient>
+
+    <linearGradient id="pouchGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FF9E1B" />
+      <stop offset="50%" stop-color="#F77F00" />
+      <stop offset="100%" stop-color="#D64911" />
+    </linearGradient>
+
+    <linearGradient id="bodyGrad" x1="0.2" y1="0" x2="0.8" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="70%" stop-color="#F2F4F8" />
+      <stop offset="100%" stop-color="#D8DFE8" />
+    </linearGradient>
+
+    <linearGradient id="wingGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#E6ECF2" />
+      <stop offset="60%" stop-color="#CBD5E1" />
+      <stop offset="100%" stop-color="#94A3B8" />
+    </linearGradient>
+
+    <!-- Bicycle Frame Gradient -->
+    <linearGradient id="bikeFrameGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#E63946" />
+      <stop offset="50%" stop-color="#D62828" />
+      <stop offset="100%" stop-color="#9B1B1B" />
+    </linearGradient>
+
+    <!-- Reusable Wheel Definition -->
+    <g id="bicycleWheel">
+      <!-- Tire -->
+      <circle cx="0" cy="0" r="85" fill="none" stroke="#22252A" stroke-width="14" />
+      <circle cx="0" cy="0" r="85" fill="none" stroke="#3A3F47" stroke-width="4" stroke-dasharray="10 6" />
+      <!-- Rim -->
+      <circle cx="0" cy="0" r="74" fill="none" stroke="#CBD5E1" stroke-width="5" />
+      <circle cx="0" cy="0" r="71" fill="none" stroke="#64748B" stroke-width="1.5" />
+      <!-- Spokes -->
+      <g stroke="#94A3B8" stroke-width="1.5" opacity="0.85">
+        <line x1="0" y1="-71" x2="0" y2="71" />
+        <line x1="-71" y1="0" x2="71" y2="0" />
+        <line x1="-50.2" y1="-50.2" x2="50.2" y2="50.2" />
+        <line x1="-50.2" y1="50.2" x2="50.2" y2="-50.2" />
+        <line x1="-27.2" y1="-65.6" x2="27.2" y2="65.6" />
+        <line x1="27.2" y1="-65.6" x2="-27.2" y2="65.6" />
+        <line x1="-65.6" y1="-27.2" x2="65.6" y2="27.2" />
+        <line x1="-65.6" y1="27.2" x2="65.6" y2="-27.2" />
+      </g>
+      <!-- Hub -->
+      <circle cx="0" cy="0" r="10" fill="#475569" stroke="#1E293B" stroke-width="2" />
+      <circle cx="0" cy="0" r="4" fill="#CBD5E1" />
+    </g>
+
+    <!-- Cloud Definition -->
+    <g id="cloud" fill="#FFFFFF" opacity="0.85">
+      <circle cx="0" cy="0" r="25" />
+      <circle cx="22" cy="-8" r="30" />
+      <circle cx="50" cy="-2" r="26" />
+      <circle cx="72" cy="8" r="20" />
+      <rect x="-10" y="5" width="90" height="20" rx="10" />
+    </g>
+  </defs>
+
+  <!-- ==================== BACKGROUND ==================== -->
+  <rect width="800" height="600" fill="url(#skyGrad)" />
+
+  <!-- Sun -->
+  <circle cx="670" cy="95" r="45" fill="#FFF3B0" opacity="0.6" />
+  <circle cx="670" cy="95" r="32" fill="#FFE169" />
+
+  <!-- Clouds -->
+  <use href="#cloud" transform="translate(110, 90) scale(0.9)" />
+  <use href="#cloud" transform="translate(430, 120) scale(0.75)" />
+
+  <!-- Distant Pier / Ocean -->
+  <rect x="0" y="390" width="800" height="60" fill="url(#waterGrad)" />
+  <!-- Water sparkles -->
+  <g stroke="#A8DADC" stroke-width="2" stroke-linecap="round" opacity="0.6">
+    <line x1="50" y1="405" x2="90" y2="405" />
+    <line x1="180" y1="418" x2="240" y2="418" />
+    <line x1="560" y1="408" x2="620" y2="408" />
+    <line x1="690" y1="422" x2="740" y2="422" />
+  </g>
+
+  <!-- Distant Pier Pilings -->
+  <g fill="#6D594A">
+    <rect x="60" y="370" width="8" height="35" />
+    <rect x="105" y="370" width="8" height="35" />
+    <rect x="150" y="370" width="8" height="35" />
+    <rect x="195" y="370" width="8" height="35" />
+    <rect x="50" y="373" width="165" height="6" rx="2" />
+  </g>
+
+  <!-- Boardwalk / Ground -->
+  <rect x="0" y="445" width="800" height="155" fill="#E9D8A6" />
+  <rect x="0" y="445" width="800" height="10" fill="#D4A373" />
+  <!-- Boardwalk Plank Lines -->
+  <g stroke="#C69C6D" stroke-width="2" opacity="0.7">
+    <line x1="0" y1="485" x2="800" y2="485" />
+    <line x1="0" y1="530" x2="800" y2="530" />
+    <line x1="0" y1="575" x2="800" y2="575" />
+    <line x1="120" y1="455" x2="90" y2="600" />
+    <line x1="280" y1="455" x2="265" y2="600" />
+    <line x1="450" y1="455" x2="450" y2="600" />
+    <line x1="620" y1="455" x2="635" y2="600" />
+    <line x1="760" y1="455" x2="790" y2="600" />
+  </g>
+
+  <!-- Ground Shadow under Bike -->
+  <ellipse cx="415" cy="525" rx="205" ry="16" fill="#000000" opacity="0.18" />
+
+  <!-- ==================== PELICAN (BACK LEG & BACK WING) ==================== -->
+  <!-- Far/Left Leg pedaling down -->
+  <g id="pelicanBackLeg">
+    <path d="M 335 365 L 368 415" stroke="#E07A16" stroke-width="11" stroke-linecap="round" />
+    <!-- Webbed Foot on far pedal -->
+    <path d="M 358 412 L 385 408 L 388 418 L 358 419 Z" fill="#F77F00" stroke="#C85A00" stroke-width="2" stroke-linejoin="round" />
+  </g>
+
+  <!-- ==================== BICYCLE ==================== -->
+  <!-- Rear Wheel -->
+  <use href="#bicycleWheel" x="260" y="430" />
+  <!-- Front Wheel -->
+  <use href="#bicycleWheel" x="560" y="430" />
+
+  <!-- Far Pedal Crank -->
+  <line x1="395" y1="435" x2="372" y2="412" stroke="#475569" stroke-width="6" stroke-linecap="round" />
+  <rect x="360" y="408" width="24" height="7" rx="3" fill="#1E293B" />
+
+  <!-- Bicycle Frame -->
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <!-- Rear Triangle (Chainstay & Seatstay) -->
+    <line x1="260" y1="430" x2="395" y2="435" stroke="url(#bikeFrameGrad)" stroke-width="9" />
+    <line x1="260" y1="430" x2="345" y2="330" stroke="url(#bikeFrameGrad)" stroke-width="8" />
+    <!-- Seat Tube -->
+    <line x1="395" y1="435" x2="340" y2="310" stroke="url(#bikeFrameGrad)" stroke-width="11" />
+    <!-- Top Tube -->
+    <line x1="345" y1="330" x2="495" y2="315" stroke="url(#bikeFrameGrad)" stroke-width="10" />
+    <!-- Down Tube -->
+    <line x1="395" y1="435" x2="498" y2="335" stroke="url(#bikeFrameGrad)" stroke-width="11" />
+    <!-- Head Tube -->
+    <line x1="490" y1="300" x2="505" y2="350" stroke="#B91C1C" stroke-width="13" />
+    <!-- Front Fork -->
+    <path d="M 503 345 L 560 430" stroke="url(#bikeFrameGrad)" stroke-width="10" fill="none" />
+  </g>
+
+  <!-- Rear Fender -->
+  <path d="M 178 405 A 92 92 0 0 1 325 365" fill="none" stroke="#CBD5E1" stroke-width="6" stroke-linecap="round" />
+  <!-- Front Fender -->
+  <path d="M 480 390 A 92 92 0 0 1 630 375" fill="none" stroke="#CBD5E1" stroke-width="6" stroke-linecap="round" />
+
+  <!-- Seatpost & Saddle -->
+  <line x1="340" y1="310" x2="332" y2="285" stroke="#94A3B8" stroke-width="7" stroke-linecap="round" />
+  <path d="M 302 283 C 302 275, 362 275, 365 284 C 365 291, 340 292, 325 291 C 310 290, 302 289, 302 283 Z" fill="#4A3525" stroke="#2D1E12" stroke-width="2" />
+
+  <!-- Chainring & Chain -->
+  <line x1="260" y1="422" x2="395" y2="417" stroke="#334155" stroke-width="3" stroke-dasharray="4 3" />
+  <line x1="260" y1="438" x2="395" y2="453" stroke="#334155" stroke-width="3" stroke-dasharray="4 3" />
+  <circle cx="395" cy="435" r="20" fill="#CBD5E1" stroke="#475569" stroke-width="4" />
+  <circle cx="395" cy="435" r="12" fill="none" stroke="#64748B" stroke-width="2" />
+
+  <!-- Handlebar Stem & Cruiser Handlebars -->
+  <line x1="490" y1="300" x2="480" y2="262" stroke="#94A3B8" stroke-width="7" stroke-linecap="round" />
+  <path d="M 480 262 C 470 250, 445 248, 435 256" fill="none" stroke="#CBD5E1" stroke-width="7" stroke-linecap="round" />
+  <!-- Handlebar Grip -->
+  <rect x="422" y="250" width="22" height="10" rx="5" transform="rotate(-15 433 255)" fill="#4A3525" />
+
+  <!-- Vintage Headlight -->
+  <g transform="translate(510, 330)">
+    <rect x="-6" y="-8" width="16" height="16" rx="4" fill="#94A3B8" stroke="#475569" stroke-width="2" />
+    <ellipse cx="11" cy="0" rx="4" ry="8" fill="#FEF08A" />
+    <!-- Light Beam -->
+    <polygon points="15,-6 75,-22 75,22 15,6" fill="#FEF08A" opacity="0.28" />
+  </g>
+
+  <!-- ==================== PELICAN (MAIN BODY, HEAD, FRONT WING & LEG) ==================== -->
+  <g id="pelicanMain">
+    <!-- Tail Feathers -->
+    <path d="M 272 252 L 222 232 L 245 258 L 218 262 L 255 276 Z" fill="#CBD5E1" stroke="#94A3B8" stroke-width="2" stroke-linejoin="round" />
+
+    <!-- Main Body & S-Curved Neck -->
+    <path d="M 270 250 
+             C 250 285, 290 325, 345 312 
+             C 395 300, 415 245, 405 190 
+             C 398 150, 422 125, 445 122 
+             C 472 118, 495 135, 492 162 
+             C 488 188, 458 195, 448 220 
+             C 435 255, 415 310, 345 312 Z" fill="url(#bodyGrad)" stroke="#CBD5E1" stroke-width="2.5" />
+
+    <!-- Neck Feathers / Crest Tuft -->
+    <path d="M 432 124 L 415 108 L 430 114 L 422 100 L 442 118" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="2" stroke-linejoin="round" />
+
+    <!-- Sailor / Captain Cap -->
+    <g transform="translate(458, 118) rotate(12)">
+      <!-- Hat Crown -->
+      <path d="M -24 0 C -26 -16, 26 -16, 24 0 Z" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="2" />
+      <!-- Hat Band -->
+      <rect x="-23" y="-3" width="46" height="6" rx="2" fill="#1D3557" />
+      <!-- Gold Anchor Emblem -->
+      <circle cx="8" cy="0" r="2.5" fill="#FDB813" />
+      <!-- Visor -->
+      <path d="M 5 3 L 34 6 C 32 11, 14 10, 4 5 Z" fill="#1D3557" />
+    </g>
+
+    <!-- Iconic Pelican Beak & Throat Pouch -->
+    <g id="pelicanBeak">
+      <!-- Throat Pouch (Lower Mandible) -->
+      <path d="M 482 155 
+               C 525 158, 610 155, 652 152 
+               C 645 188, 595 225, 535 222 
+               C 492 220, 472 192, 476 168 Z" fill="url(#pouchGrad)" stroke="#C85A00" stroke-width="2.5" stroke-linejoin="round" />
+      <!-- Pouch Fold Lines -->
+      <path d="M 495 178 C 535 198, 590 198, 628 172" fill="none" stroke="#D64911" stroke-width="2" stroke-linecap="round" opacity="0.65" />
+      <path d="M 505 194 C 545 210, 585 208, 615 188" fill="none" stroke="#D64911" stroke-width="1.8" stroke-linecap="round" opacity="0.5" />
+
+      <!-- Upper Beak -->
+      <path d="M 480 140 
+               C 535 135, 615 138, 662 146 
+               C 668 148, 668 158, 660 163 
+               L 655 154 
+               C 605 157, 525 160, 480 156 Z" fill="url(#beakTopGrad)" stroke="#C85A00" stroke-width="2.5" stroke-linejoin="round" />
+      <!-- Nostril slit -->
+      <line x1="498" y1="145" x2="514" y2="145" stroke="#B84A00" stroke-width="2" stroke-linecap="round" />
+    </g>
+
+    <!-- Eye & Aviator Sunglasses -->
+    <g transform="translate(465, 142)">
+      <!-- Eye patch -->
+      <circle cx="0" cy="0" r="9" fill="#FFE8D6" />
+      <!-- Sunglasses Frame & Lens -->
+      <path d="M -8 -5 L 12 -5 L 10 6 C 8 9, -4 9, -7 5 Z" fill="#1E293B" stroke="#FDB813" stroke-width="2" />
+      <!-- Lens Glare -->
+      <line x1="-4" y1="-2" x2="2" y2="4" stroke="#38BDF8" stroke-width="2" stroke-linecap="round" opacity="0.8" />
+      <!-- Glasses Arm -->
+      <line x1="-8" y1="-3" x2="-24" y2="-1" stroke="#FDB813" stroke-width="2" />
+    </g>
+
+    <!-- Stylish Striped Scarf Fluttering in the Wind -->
+    <g id="scarf">
+      <!-- Trailing Scarf Tails -->
+      <path d="M 402 206 C 365 212, 325 190, 285 202 C 315 214, 355 224, 398 216 Z" fill="#E63946" stroke="#B91C1C" stroke-width="1.5" />
+      <path d="M 398 214 C 355 228, 310 218, 272 232 C 312 238, 355 236, 400 222 Z" fill="#1D3557" stroke="#0F172A" stroke-width="1.5" />
+      <!-- Scarf Collar Wrap -->
+      <path d="M 398 198 C 418 205, 438 205, 452 198 L 448 216 C 432 222, 412 222, 395 214 Z" fill="#E63946" stroke="#B91C1C" stroke-width="2" />
+      <line x1="415" y1="203" x2="413" y2="219" stroke="#FFFFFF" stroke-width="4" />
+      <line x1="433" y1="203" x2="431" y2="219" stroke="#FFFFFF" stroke-width="4" />
+    </g>
+
+    <!-- Near/Right Leg Pedaling -->
+    <g id="pelicanFrontLeg">
+      <!-- Thigh & Shin -->
+      <path d="M 332 305 L 375 385 L 408 455" fill="none" stroke="#F77F00" stroke-width="13" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M 332 305 L 375 385 L 408 455" fill="none" stroke="#FF9E1B" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+      <!-- Webbed Foot Gripping Front Pedal -->
+      <path d="M 392 456 C 402 452, 428 450, 442 456 C 445 462, 435 466, 425 464 C 418 467, 410 467, 404 464 C 396 466, 388 462, 392 456 Z" fill="#F77F00" stroke="#C85A00" stroke-width="2.5" stroke-linejoin="round" />
+      <!-- Toe ridges -->
+      <line x1="406" y1="457" x2="405" y2="464" stroke="#C85A00" stroke-width="2" stroke-linecap="round" />
+      <line x1="422" y1="457" x2="424" y2="464" stroke="#C85A00" stroke-width="2" stroke-linecap="round" />
+    </g>
+
+    <!-- Front Crank Arm & Pedal (Layered over foot arch) -->
+    <line x1="395" y1="435" x2="412" y2="462" stroke="#64748B" stroke-width="7" stroke-linecap="round" />
+    <circle cx="395" cy="435" r="7" fill="#334155" />
+    <rect x="398" y="459" width="28" height="8" rx="4" fill="#1E293B" stroke="#475569" stroke-width="1.5" />
+
+    <!-- Near/Right Wing Reaching to Handlebar -->
+    <g id="pelicanFrontWing">
+      <path d="M 310 245 
+               C 335 220, 385 228, 432 252 
+               C 425 268, 395 282, 355 285 
+               C 325 288, 295 275, 292 260 Z" fill="url(#wingGrad)" stroke="#94A3B8" stroke-width="2.5" stroke-linejoin="round" />
+      <!-- Wing Feather Details -->
+      <path d="M 325 258 C 350 258, 375 262, 398 265" fill="none" stroke="#94A3B8" stroke-width="2" stroke-linecap="round" />
+      <path d="M 318 270 C 345 272, 368 274, 388 274" fill="none" stroke="#94A3B8" stroke-width="2" stroke-linecap="round" />
+      <!-- Wingtip "Fingers" gripping handlebar -->
+      <path d="M 426 248 C 436 246, 442 252, 438 258 C 432 262, 424 260, 422 255 Z" fill="#CBD5E1" stroke="#64748B" stroke-width="2" />
+    </g>
+  </g>
+
+  <!-- ==================== MOTION LINES ==================== -->
+  <g stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" opacity="0.75">
+    <line x1="115" y1="380" x2="155" y2="380" />
+    <line x1="95" y1="415" x2="145" y2="415" />
+    <line x1="125" y1="450" x2="160" y2="450" />
+    <line x1="175" y1="220" x2="215" y2="220" />
+  </g>
+</svg>

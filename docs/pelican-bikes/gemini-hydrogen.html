@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pelican Bikes — Coastal Bike Repair</title>
+  <style>
+    :root {
+      --bg: #f6f4ef;
+      --surface: #ffffff;
+      --surface-alt: #edeae2;
+      --text: #1c242b;
+      --muted: #5a6772;
+      --accent: #e06d24;
+      --accent-hover: #c55a16;
+      --border: #dcd7cb;
+      --shadow: 0 8px 24px rgba(28, 36, 43, 0.08);
+      --pelican-body: #ffffff;
+      --pelican-wing: #cbd5e1;
+      --pelican-outline: #1c242b;
+      --pelican-beak: #f59e0b;
+      --pelican-pouch: #fb923c;
+    }
+
+    [data-theme="dark"] {
+      --bg: #11161b;
+      --surface: #1a222a;
+      --surface-alt: #232d37;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --accent: #f58238;
+      --accent-hover: #ff9854;
+      --border: #2c3844;
+      --shadow: 0 8px 28px rgba(0, 0, 0, 0.45);
+      --pelican-body: #e2e8f0;
+      --pelican-wing: #94a3b8;
+      --pelican-outline: #0f172a;
+      --pelican-beak: #fbbf24;
+      --pelican-pouch: #f97316;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      transition: background-color 0.25s ease, color 0.25s ease;
+    }
+
+    .container {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 1.25rem;
+    }
+
+    /* Top Bar */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 0 2rem;
+    }
+
+    .brand-tag {
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .theme-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background-color: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 0.55rem 1rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      transition: transform 0.15s ease, background-color 0.25s ease, border-color 0.25s ease;
+    }
+
+    .theme-btn:hover {
+      transform: translateY(-1px);
+      border-color: var(--accent);
+    }
+
+    .theme-btn:active {
+      transform: translateY(0);
+    }
+
+    /* Hero Section */
+    .hero {
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2.25rem 1.75rem;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 1.5rem;
+      margin-bottom: 2.25rem;
+      transition: background-color 0.25s ease, border-color 0.25s ease;
+    }
+
+    @media (min-width: 700px) {
+      .hero {
+        flex-direction: row;
+        text-align: left;
+        justify-content: space-between;
+        padding: 3rem;
+      }
+    }
+
+    .hero-text {
+      max-width: 520px;
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 5vw, 3.5rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 0.75rem;
+    }
+
+    .slogan {
+      font-size: clamp(1.1rem, 2.2vw, 1.3rem);
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .pelican-box {
+      flex-shrink: 0;
+      background-color: var(--surface-alt);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: background-color 0.25s ease, border-color 0.25s ease;
+    }
+
+    .pelican-caption {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--muted);
+      margin-top: 0.35rem;
+    }
+
+    /* Section Headings */
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    /* Services Grid */
+    .services-section {
+      margin-bottom: 2.25rem;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.1rem;
+    }
+
+    @media (min-width: 700px) {
+      .services-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .card {
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: background-color 0.25s ease, border-color 0.25s ease;
+    }
+
+    .service-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 0.5rem;
+      margin-bottom: 0.65rem;
+    }
+
+    .service-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+
+    .price {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+
+    .service-desc {
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    /* Hours & Info */
+    .hours-card {
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.75rem;
+      box-shadow: var(--shadow);
+      transition: background-color 0.25s ease, border-color 0.25s ease;
+    }
+
+    .hours-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 650px) {
+      .hours-layout {
+        grid-template-columns: 1.2fr 1fr;
+        align-items: center;
+      }
+    }
+
+    .hours-list {
+      list-style: none;
+    }
+
+    .hours-list li {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.55rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.98rem;
+    }
+
+    .hours-list li:last-child {
+      border-bottom: none;
+    }
+
+    .day {
+      font-weight: 600;
+    }
+
+    .time {
+      color: var(--muted);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .shop-note {
+      background-color: var(--surface-alt);
+      border-radius: 12px;
+      padding: 1.25rem;
+      font-size: 0.95rem;
+      color: var(--muted);
+      transition: background-color 0.25s ease;
+    }
+
+    .shop-note strong {
+      display: block;
+      color: var(--text);
+      margin-bottom: 0.35rem;
+      font-size: 1rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 0 1rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <span class="brand-tag">Pier 4 Workshop</span>
+      <button id="themeToggle" class="theme-btn" type="button" aria-label="Switch color theme">
+        <span id="themeIcon" aria-hidden="true">🌙</span>
+        <span id="themeLabel">Dark Look</span>
+      </button>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-text">
+          <h1>Pelican Bikes</h1>
+          <p class="slogan">Big beak, bigger wrenches — honest bike repairs by the harbor.</p>
+        </div>
+
+        <div class="pelican-box">
+          <!-- Hand-drawn inline SVG Pelican Mechanic -->
+          <svg width="160" height="150" viewBox="0 0 160 150" role="img" aria-label="Drawing of Captain Pete the pelican holding a wrench">
+            <!-- Legs & Webbed Feet -->
+            <path d="M68 118 L64 136 M84 118 L86 136" stroke="#f59e0b" stroke-width="4" stroke-linecap="round" />
+            <path d="M54 138 L66 135 L72 139 Z" fill="#f59e0b" />
+            <path d="M78 139 L86 135 L98 138 Z" fill="#f59e0b" />
+
+            <!-- Body -->
+            <ellipse cx="75" cy="92" rx="28" ry="30" fill="var(--pelican-body)" stroke="var(--pelican-outline)" stroke-width="3" />
+
+            <!-- Neck & Head -->
+            <path d="M62 72 C58 50, 62 32, 76 30 C90 28, 94 44, 88 70 Z" fill="var(--pelican-body)" stroke="var(--pelican-outline)" stroke-width="3" />
+
+            <!-- Mechanic Cap -->
+            <path d="M63 32 C64 21, 88 21, 89 32 Z" fill="#2563eb" stroke="var(--pelican-outline)" stroke-width="2.5" />
+            <path d="M84 31 L100 33 L86 35 Z" fill="#1d4ed8" stroke="var(--pelican-outline)" stroke-width="2" />
+
+            <!-- Eye -->
+            <circle cx="81" cy="39" r="3.2" fill="#0f172a" />
+            <circle cx="82" cy="38" r="1" fill="#ffffff" />
+
+            <!-- Iconic Pelican Beak & Pouch -->
+            <path d="M88 42 L144 48 C146 48, 146 53, 142 54 L88 53 Z" fill="var(--pelican-beak)" stroke="var(--pelican-outline)" stroke-width="2.5" stroke-linejoin="round" />
+            <path d="M88 53 L140 54 C134 73, 102 74, 88 62 Z" fill="var(--pelican-pouch)" stroke="var(--pelican-outline)" stroke-width="2.5" stroke-linejoin="round" />
+
+            <!-- Wing -->
+            <path d="M56 80 C44 92, 50 112, 74 110 C82 108, 84 94, 72 82 Z" fill="var(--pelican-wing)" stroke="var(--pelican-outline)" stroke-width="2.5" />
+
+            <!-- Steel Wrench tucked under wing -->
+            <g transform="translate(26, 74) rotate(-22)">
+              <rect x="10" y="6" width="34" height="6" rx="2" fill="#94a3b8" stroke="var(--pelican-outline)" stroke-width="2" />
+              <path d="M12 3 A7 7 0 1 0 12 15 L12 11 L6 11 L6 7 L12 7 Z" fill="#94a3b8" stroke="var(--pelican-outline)" stroke-width="2" />
+            </g>
+          </svg>
+          <span class="pelican-caption">Captain Pete — Head Mechanic</span>
+        </div>
+      </section>
+
+      <section class="services-section">
+        <h2>Repair Services</h2>
+        <div class="services-grid">
+          <article class="card">
+            <div>
+              <div class="service-header">
+                <h3 class="service-title">Flat Tire Rescue</h3>
+                <span class="price">$18</span>
+              </div>
+              <p class="service-desc">
+                Fresh inner tube, thorough tire check for glass or seashells, and inflation to your exact PSI.
+              </p>
+            </div>
+          </article>
+
+          <article class="card">
+            <div>
+              <div class="service-header">
+                <h3 class="service-title">Harbor Tune-Up</h3>
+                <span class="price">$55</span>
+              </div>
+              <p class="service-desc">
+                Gear indexing, brake pad alignment, chain degreasing and lube, plus a full bolt safety check.
+              </p>
+            </div>
+          </article>
+
+          <article class="card">
+            <div>
+              <div class="service-header">
+                <h3 class="service-title">Wheel Truing</h3>
+                <span class="price">$30</span>
+              </div>
+              <p class="service-desc">
+                Spoke tension balancing on our truing stand so your wheels spin straight without rubbing.
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="hours-card">
+        <h2>Opening Hours</h2>
+        <div class="hours-layout">
+          <ul class="hours-list">
+            <li>
+              <span class="day">Monday – Friday</span>
+              <span class="time">8:00 AM – 6:00 PM</span>
+            </li>
+            <li>
+              <span class="day">Saturday</span>
+              <span class="time">9:00 AM – 4:00 PM</span>
+            </li>
+            <li>
+              <span class="day">Sunday</span>
+              <span class="time">Closed (Gone Fishing)</span>
+            </li>
+          </ul>
+
+          <div class="shop-note">
+            <strong>Walk-Ins Welcome</strong>
+            Roll right up to Pier 4, Boathouse Lane. No appointment needed for flats, brake adjustments, or free tire air.
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      Pelican Bikes &bull; Pier 4, Boathouse Lane &bull; Built for smooth rides
+    </footer>
+  </div>
+
+  <script>
+    const root = document.documentElement;
+    const toggleBtn = document.getElementById("themeToggle");
+    const themeIcon = document.getElementById("themeIcon");
+    const themeLabel = document.getElementById("themeLabel");
+
+    function applyTheme(theme) {
+      if (theme === "dark") {
+        root.setAttribute("data-theme", "dark");
+        themeIcon.textContent = "☀️";
+        themeLabel.textContent = "Light Look";
+      } else {
+        root.removeAttribute("data-theme");
+        themeIcon.textContent = "🌙";
+        themeLabel.textContent = "Dark Look";
+      }
+    }
+
+    const savedTheme = localStorage.getItem("pelican-theme");
+    if (savedTheme) {
+      applyTheme(savedTheme);
+    }
+
+    toggleBtn.addEventListener("click", () => {
+      const isDark = root.getAttribute("data-theme") === "dark";
+      const nextTheme = isDark ? "light" : "dark";
+      applyTheme(nextTheme);
+      localStorage.setItem("pelican-theme", nextTheme);
+    });
+  </script>
+</body>
+</html>
