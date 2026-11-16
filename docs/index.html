@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The AI tests · Building with AI</title>
-<meta name="description" content="One prompt, six AI models. The tests from the book Building with AI by Peter Stam: a website for a pelican's bike shop, and a pelican on a bike.">
-<meta property="og:title" content="The AI tests"><meta property="og:description" content="One prompt, six AI models. Try every result yourself."><meta property="og:image" content="https://tests.peterstam.eu/shots/fable.jpg">
+<meta name="description" content="The same prompt for every AI model. The tests from the book Building with AI by Peter Stam: a website for a pelican's bike shop, and a pelican on a bike.">
+<meta property="og:title" content="The AI tests"><meta property="og:description" content="The same prompt for every AI model. Try every result yourself."><meta property="og:image" content="https://tests.peterstam.eu/shots/fable.jpg">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%237A4DFF'/%3E%3Crect x='27' y='14' width='10' height='36' rx='4' fill='%23B9F24A'/%3E%3C/svg%3E">
 <style>
 :root{--bg:#F5F2FF;--ink:#1E1438;--body:#42375F;--card:#FFFFFF;--line:#E4DDF7;--purple:#7A4DFF;--purple-ink:#FFFFFF;--lime:#B9F24A;--good:#1E7B3A;--code:#1E1438;--code-ink:#FFFFFF}
@@ -39,12 +39,12 @@ footer{margin-top:54px;padding-top:20px;border-top:1px solid var(--line);color:v
 <main>
   <p class="kick">From the book Building with AI</p>
   <h1>The AI tests<i></i></h1>
-  <p class="lede">One prompt, six AI models, one go each, no follow-ups. These are the tests from Chapter 3 of my book. Everything here is the real answer each model gave, untouched, so you can judge for yourself.</p>
+  <p class="lede">The same prompt for every AI model, one go each, no follow-ups. These are the tests from Chapter 3 of my book. Everything here is the real answer each model gave, untouched, so you can judge for yourself.</p>
   <nav aria-label="On this page"><a href="#website">The website test</a><a href="#pelican">The pelican test</a></nav>
 
   <section id="website" aria-labelledby="h-website">
     <h2 id="h-website">The website test</h2>
-    <p class="sub">Every model got exactly these words. Open each page and press its light and dark button.</p>
+    <p class="sub">Six models got exactly these words. Open each page and press its light and dark button.</p>
     <pre>Make a one-page website for a made-up bike repair shop run by a pelican, called "Pelican Bikes".
 
 Put everything in one file called index.html. No outside files, no libraries, no images from the internet.
@@ -71,12 +71,12 @@ It must look good on a phone and on a computer. Give me only the finished file.<
 
   <section id="pelican" aria-labelledby="h-pelican">
     <h2 id="h-pelican">The pelican test</h2>
-    <p class="sub">The same six models, one line: an SVG is a picture written as code, so this is a drawing test and a coding test at once.</p>
+    <p class="sub">Nine models, one line: an SVG is a picture written as code, so this is a drawing test and a coding test at once. The last three are screenshots of what the model drew.</p>
     <pre>make a detailed svg of a pelican on a bike</pre>
-    <div class="grid"><figure class="card"><a class="shot" href="pelicans/haiku.svg"><img src="pelicans/haiku.svg" width="800" height="600" alt="A pelican on a bike, drawn by Claude Haiku 5.5" loading="lazy"></a><figcaption class="meta"><h3>Claude Haiku 5.5</h3></figcaption></figure><figure class="card"><a class="shot" href="pelicans/sonnet.svg"><img src="pelicans/sonnet.svg" width="800" height="600" alt="A pelican on a bike, drawn by Claude Sonnet 5.5" loading="lazy"></a><figcaption class="meta"><h3>Claude Sonnet 5.5</h3></figcaption></figure><figure class="card"><a class="shot" href="pelicans/fable.svg"><img src="pelicans/fable.svg" width="800" height="600" alt="A pelican on a bike, drawn by Claude Fable 5.2" loading="lazy"></a><figcaption class="meta"><h3>Claude Fable 5.2</h3></figcaption></figure><figure class="card"><a class="shot" href="pelicans/gemini-argon.svg"><img src="pelicans/gemini-argon.svg" width="800" height="600" alt="A pelican on a bike, drawn by Gemini Argon" loading="lazy"></a><figcaption class="meta"><h3>Gemini Argon</h3></figcaption></figure><figure class="card"><a class="shot" href="pelicans/gemini-hydrogen.svg"><img src="pelicans/gemini-hydrogen.svg" width="800" height="600" alt="A pelican on a bike, drawn by Gemini Hydrogen" loading="lazy"></a><figcaption class="meta"><h3>Gemini Hydrogen</h3></figcaption></figure><figure class="card"><a class="shot" href="pelicans/glm.svg"><img src="pelicans/glm.svg" width="800" height="600" alt="A pelican on a bike, drawn by GLM 5.3" loading="lazy"></a><figcaption class="meta"><h3>GLM 5.3</h3></figcaption></figure></div>
+    <div class="grid"><figure class="card"><a class="shot" href="pelicans/haiku.svg"><img src="pelicans/haiku.svg" width="800" height="600" alt="A pelican on a bike, drawn by Claude Haiku 5.5" loading="lazy"></a><figcaption class="meta"><h3>Claude Haiku 5.5</h3></figcaption></figure><figure class="card"><a class="shot" href="pelicans/sonnet.svg"><img src="pelicans/sonnet.svg" width="800" height="600" alt="A pelican on a bike, drawn by Claude Sonnet 5.5" loading="lazy"></a><figcaption class="meta"><h3>Claude Sonnet 5.5</h3></figcaption></figure><figure class="card"><a class="shot" href="pelicans/fable.svg"><img src="pelicans/fable.svg" width="800" height="600" alt="A pelican on a bike, drawn by Claude Fable 5.2" loading="lazy"></a><figcaption class="meta"><h3>Claude Fable 5.2</h3></figcaption></figure><figure class="card"><a class="shot" href="pelicans/gemini-argon.svg"><img src="pelicans/gemini-argon.svg" width="800" height="600" alt="A pelican on a bike, drawn by Gemini Argon" loading="lazy"></a><figcaption class="meta"><h3>Gemini Argon</h3></figcaption></figure><figure class="card"><a class="shot" href="pelicans/gemini-hydrogen.svg"><img src="pelicans/gemini-hydrogen.svg" width="800" height="600" alt="A pelican on a bike, drawn by Gemini Hydrogen" loading="lazy"></a><figcaption class="meta"><h3>Gemini Hydrogen</h3></figcaption></figure><figure class="card"><a class="shot" href="pelicans/glm.svg"><img src="pelicans/glm.svg" width="800" height="600" alt="A pelican on a bike, drawn by GLM 5.3" loading="lazy"></a><figcaption class="meta"><h3>GLM 5.3</h3></figcaption></figure><figure class="card"><a class="shot" href="pelicans/chatgpt.jpg"><img src="pelicans/chatgpt.jpg" width="1200" height="900" alt="A pelican on a bike, drawn by ChatGPT (GPT 6)" loading="lazy"></a><figcaption class="meta"><h3>ChatGPT (GPT 6)</h3></figcaption></figure><figure class="card"><a class="shot" href="pelicans/qwen.jpg"><img src="pelicans/qwen.jpg" width="1200" height="900" alt="A pelican on a bike, drawn by Qwen" loading="lazy"></a><figcaption class="meta"><h3>Qwen</h3></figcaption></figure><figure class="card"><a class="shot" href="pelicans/deepseek.jpg"><img src="pelicans/deepseek.jpg" width="1200" height="900" alt="A pelican on a bike, drawn by DeepSeek" loading="lazy"></a><figcaption class="meta"><h3>DeepSeek</h3></figcaption></figure></div>
   </section>
 
-  <p class="fair"><b>Not a perfectly fair race.</b> The three Claude models worked inside my project. For the pelican they could look at their own picture and fix it before handing it over. Gemini and GLM answered in a chat, in a single go. &ldquo;Peter&rsquo;s pick&rdquo; is only my opinion, and Claude is also the AI I build with. Look, and decide for yourself.</p>
+  <p class="fair"><b>Not a perfectly fair race.</b> The three Claude models worked inside my project. For the pelican they could look at their own picture and fix it before handing it over. All the others answered in a chat, in a single go. &ldquo;Peter&rsquo;s pick&rdquo; is only my opinion, and Claude is also the AI I build with. Look, and decide for yourself.</p>
 
   <footer><span>Made by Peter Stam, 11, Berlin · <a href="https://peterstam.eu">peterstam.eu</a></span><span>No accounts, no ads, no tracking.</span></footer>
 </main>
